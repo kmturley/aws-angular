@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>AngularJS &amp; AWS SDK Example</h1>
+    <div ng-show="!user" class="row">
+        <div class="col-md-12">
+            <h2>Login to continue</h2>
+            <div google-signin client-id="XXXXXXXX" after-signin="signedIn(oauth)"></div>
+        </div>
+    </div>
+    <div ng-show="user">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Upload</h3>
+                <div file-upload="onFile(files)"></div>
+            </div>
+            <div class="col-md-12">
+                <h3>Your Images</h3>
+            </div>
+            <div ng-show="images" class="equalHParent">
+                <div class="col-md-4" ng-repeat="image in images">
+                    <div class="thumbnail">
+                        <img ng-click="sellImage(image)" data-ng-src="{{image.itemUrl}}" />
+                    </div>
+                </div>
+            </div>
+            <div ng-show="!images">
+                <h3>You have no images. Upload something</h3>
+            </div>
+        </div>
+        <h3>Your Profile</h3>
+        <pre>{{ user | json }}</pre>
+    </div>
+</div>
